@@ -1,11 +1,37 @@
-from smarthouse import SmartHouse
+from smarthouse import SmartHouse, Room, Floor
 from devices import *
 
 
 def build_demo_house() -> SmartHouse:
     house = SmartHouse()
-    # TODO! her skal du legge inn etasjer, rom og enheter som at resultatet tilsvarer demo huset!
+
+    #making rooms
+    house.create_floor()
+    house.create_room(1, 39.75,"Living Room / Kitchen")
+    house.create_room(1, 6.35,"Bathroom")
+    house.create_room(1, 13.5,"Entrance")
+    house.create_room(1, 8, "Guest Room 1")
+    house.create_room(1, 19, "Garage")
+
+    #registering devices
+    house.register_device(Actuator("f11bb4fc-ba74-49cd","Smart Lys","off","Tresom Bright 1.0"),"Living Room / Kitchen")
+    house.register_device(Actuator("480dbae8-cce7-46d7","Smart Lys","off","Alphazap 2"),"Living Room / Kitchen")
+
+
+
+    house.create_floor()
+    house.create_room(2, 10,"Gang")
+    house.create_room(2, 10,"Guest Room 3")
+    house.create_room(2, 4,"Dressing Room")
+    house.create_room(2, 17,"Master Bedroom")
+
+    # #add devices
+    # floor1.get_room("LivingRoom").add_device(SmartLight("Smart Lys","Fritsch Group","Tresom Bright 1.0","f11bb4fc-ba74-49cd",False))
+    # floor1.get_room("LivingRoom").add_device(SmartThermostat("Smart Lys","Fritsch Group","Alphazap 2","480dbae8-cce7-46d7",False))
+    # floor1.get_room("LivingRoom").add_device(SmartLight("Smart Lys","Fritsch Group","Tresom Bright 1.0","f11bb4fc-ba74-49cd",False))
+    # floor1.get_room("Bathroom").add_device(SmartLight("Fuktighetssensor",	"Bernhard-Roberts","Andalax","4cb686fe-6448-4cf6",False))
     return house
+
 
 
 def do_device_list(smart_house: SmartHouse):
