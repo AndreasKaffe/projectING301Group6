@@ -1,20 +1,19 @@
 class Device:
-    def __init__(self, identifier, type, status, product_name, name=None):
-        self.identifier = identifier
+    def __init__(self, nr: int, type, producer, product_name, serial_number, status, name=None):
+        self.nr = nr
         self.type = type
+        self.producer = producer
+        self.product_name = product_name
         self.status = status
-        self.product_details = product_name
+        self.serial_number = serial_number
         self.name = name
-
     def __repr__(self):
-        return f"{self.__class__.__name__}({self.identifier}) TYPE: {self.type} STATUS: {self.status} PRODUCT DETAILS: {self.product_details} NAME: {self.name}"
-
+       f"{self.__class__.__name__}({self.serial_number}) Nr:{self.nr} TYPE: {self.type} STATUS: {self.status} PRODUCT DETAILS: {self.product_name} NAME: {self.name}"
 
 class Sensor(Device):
-    def __init__(self, identifier, type, status, product_name, name=None):
-        super().__init__(identifier, type, status, product_name, name)
-
+    def __init__(self,nr, type, producer, product_name, serial_number, status):
+        super().__init__( nr,type, producer, product_name, serial_number, status, name=None)
 
 class Actuator(Device):
-    def __init__(self, identifier, type, status, product_name, name=None):
-        super().__init__(identifier, type, status, product_name, name)
+    def __init__(self,nr, type, producer, product_name, serial_number, status):
+        super().__init__(nr, type, producer, product_name, serial_number, status, name=None)

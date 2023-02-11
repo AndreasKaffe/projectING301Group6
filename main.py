@@ -6,7 +6,7 @@ def build_demo_house() -> SmartHouse:
     house = SmartHouse()
 
     #making rooms
-    house.create_floor()
+    floor1 = house.create_floor()
     house.create_room(1, 39.75,"Living Room / Kitchen")
     house.create_room(1, 6.35,"Bathroom")
     house.create_room(1, 13.5,"Entrance")
@@ -14,10 +14,24 @@ def build_demo_house() -> SmartHouse:
     house.create_room(1, 19, "Garage")
 
     #registering devices
-    house.register_device(Actuator("f11bb4fc-ba74-49cd","Smart Lys","off","Tresom Bright 1.0"),"Living Room / Kitchen")
-    house.register_device(Actuator("480dbae8-cce7-46d7","Smart Lys","off","Alphazap 2"),"Living Room / Kitchen")
-
-
+    house.register_device(Actuator(1,"Smart Lys",	"Fritsch Group",	"Tresom Bright 1.0",	"f11bb4fc-ba74-49cd","off","lys ved stuebord venstre"),"Living Room / Kitchen")
+    house.register_device(Actuator(2,"Smart Lys",	"Fritsch Group",	"Alphazap 2",	"480dbae8-cce7-46d7","off","lys ved stue høyre"),"Living Room / Kitchen")
+    house.register_device(Sensor(3,"Fuktighetssensor",	"Bernhard-Roberts",	"Andalax",	"4cb686fe-6448-4cf6", "68%","fuktighetssensor bad"),"Bathroom")
+    house.register_device(Actuator(4,"Smart Lys",	"Fritsch Group",	"Alphazap 2",	"6a36c71d-4f48-4eb4","off","leselys i gjesterom"),"Guest Room 1")
+    house.register_device(Actuator(5,"Smart Lys",	"Larkin-Nitzsche",	"Quo Lux",	"d01130c9-a368-42c6","off","garagelys"),"Garage")
+    house.register_device(Actuator(6,"Billader",	"Jast, Hansen and Halvorson",	"Charge It 9000",	"0cae4f01-4ad9-47aa","off","billader"),"Garage")
+    house.register_device(Actuator(7,"Paneloven",	"Hauck-DuBuque",	"Voyatouch 42",	"d16d84de-79f1-4f9a","off","ovn gjesterom 1"),"Guest Room 1")
+    house.register_device(Sensor(8,"Temperatursensor",	"Moen Inc",	"Prodder Ute 1.22","e237beec-2675-4cb0", "1.3 °C","temperaturmåler ute"), None)
+    house.register_device(Actuator(9,"Smart Lys",	"Fritsch Group",	"Alphazap 2","f4db4e54-cebe-428d","off","første lys i entre"),"Entrance")
+    house.register_device(Actuator(10,"Smart Lys",	"Larkin-Nitzsche",	"Quo Vadis Lux",	"8d09aa92-fc58-4c6", "off", "utelys"),None)
+    house.register_device(Sensor(11,"Strømmåler",	"Kilback LLC",	"Transcof Current",	"c8bb5601-e850-4a80", "0kWh","strømmåler kjøkken"),"Living Room / Kitchen")
+    house.register_device(Sensor(12,"Temperatursensor",	"Moen Inc",	"Prodder Inne 2.3",	"d16d84de-79f1-4f9a", "18.1 °C", "temperaturmåler stue/kjøkken"),"Living Room / Kitchen")
+    house.register_device(Actuator(13,"Smart Lys",	"Fritsch Group",	"Alphazap 2",	"390ae474-21fb-4e06", "off","andre lys i entre" ),"Entrance")
+    house.register_device(Sensor(14,"Strømmåler",	"Ward-Schaefer",	"Zaam-Dox NetConnect",	"3b06cf0f-8494-458b","1.5 kWh","strømmåler i entre"),"Entrance")
+    house.register_device(Actuator(15,"Smart Stikkontakt",	"Kilback LLC",	"Konklab 3",	"c28b6e75-d565-4678", "off","stikkontakt kjøkken"),"Living Room / Kitchen")
+    house.register_device(Actuator(16,"Varmepumpe",	"Osinski Inc",	"Fintone XCX4AB",	"4eca6387-0767-4e4e","off","varmepumpe stue"),"Living Room / Kitchen")
+    house.register_device(Sensor(17,"Luftkvalitetssensor",	"Hauck-DuBuque",	"Sonair Pro",	"c76688cc-3692-4aa3","0.08 g/m^2","luftkvalitetssensor stue"),"Living Room / Kitchen")
+    house.register_device(Actuator(18,"Smart Stikkontakt",	"Kilback LLC",	"Konklab 3",	"4b9050f3-0ef0-4914","off","stikkontakt TV"),"Living Room / Kitchen")
 
     house.create_floor()
     house.create_room(2, 10,"Gang")
@@ -30,6 +44,7 @@ def build_demo_house() -> SmartHouse:
     # floor1.get_room("LivingRoom").add_device(SmartThermostat("Smart Lys","Fritsch Group","Alphazap 2","480dbae8-cce7-46d7",False))
     # floor1.get_room("LivingRoom").add_device(SmartLight("Smart Lys","Fritsch Group","Tresom Bright 1.0","f11bb4fc-ba74-49cd",False))
     # floor1.get_room("Bathroom").add_device(SmartLight("Fuktighetssensor",	"Bernhard-Roberts","Andalax","4cb686fe-6448-4cf6",False))
+    print(house)
     return house
 
 
@@ -125,3 +140,4 @@ def main(smart_house: SmartHouse):
 if __name__ == '__main__':
     house = build_demo_house()
     main(house)
+
